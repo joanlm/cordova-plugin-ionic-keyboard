@@ -161,8 +161,10 @@ NSString* UITraitsClassString;
         [self setKeyboardHeight:height delay:duration+0.2];
         [self resetScrollView];
     }
-    
-    [self setKeyboardStyle:self.keyboardStyle];
+
+    if (setKeyboardStyle:self.keyboardStyle != nil) {
+        [self setKeyboardStyle:self.keyboardStyle];
+    }
 
     NSString *js = [NSString stringWithFormat:@"Keyboard.fireOnShowing(%d);", (int)height];
     [self.commandDelegate evalJs:js];
